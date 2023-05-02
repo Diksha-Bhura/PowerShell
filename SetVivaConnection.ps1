@@ -15,5 +15,10 @@ foreach($PinnedApp in $PinnedApps)
   $PinnedAppBarApps.Add($app)
 }
 
+#Pin Viva App
+$portalAppId = (Get-TeamsApp -DisplayName Portal).Id
+$portalApp = New-Object -TypeName Microsoft.Teams.Policy.Administration.Cmdlets.Core.PinnedApp -Property @{Id="$($portalAppId)"}
+$PinnedAppBarApps.Add($portalApp)
+
 #Pinned new app.
 Set-CsTeamsAppSetupPolicy -Identity 'Set-Test' -PinnedAppBarApps $PinnedAppBarApps
