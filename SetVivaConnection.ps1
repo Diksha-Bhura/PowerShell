@@ -19,6 +19,8 @@ foreach($PinnedApp in $PinnedApps)
 $portalAppId = (Get-TeamsApp -DisplayName Portal).Id
 $portalApp = New-Object -TypeName Microsoft.Teams.Policy.Administration.Cmdlets.Core.PinnedApp -Property @{Id="$($portalAppId)"}
 $PinnedAppBarApps.Add($portalApp)
+
 Write-Host $PinnedAppBarApps
+
 #Pinned new app.
-Set-CsTeamsAppSetupPolicy -Identity 'Set-Test' -PinnedAppBarApps $PinnedAppBarApps
+Set-CsTeamsAppSetupPolicy -Identity 'Global' -PinnedAppBarApps $PinnedAppBarApps
